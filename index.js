@@ -1,0 +1,25 @@
+'use strict'
+
+const Hapi = require('hapi')
+
+const server = Hapi.server({
+    port: 8080,
+    host: 'localhost'
+})
+
+const init = async () => {
+    // Get routes
+    await server.register([
+    //  require('./routes/user')
+    ])
+    await server.start()
+    console.log(`Server running at: ${server.info.uri}`)
+};
+
+process.on('unhandledRejection', (err) => {
+
+    console.log(err)
+    process.exit(1)
+});
+
+init()

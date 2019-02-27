@@ -1,0 +1,16 @@
+{
+  "name": "tickets-project",
+  "version": "1.0.0",
+  "description": "project tickets management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^18.1.0",
+    "mongoose": "^5.4.15"
+  }
+}
