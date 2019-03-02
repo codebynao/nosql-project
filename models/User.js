@@ -22,12 +22,7 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  groups: [
-    {
-      type: String,
-      enum: [] // to define
-    }
-  ],
+  groups: [String],
   avatar: String,
   createdAt: {
     type: Date,
