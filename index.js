@@ -39,7 +39,8 @@ const init = async () => {
         {
             plugin: require('hapi-swagger') // to display documentation
         },
-        require('./routes/ticket')
+        require('./routes/ticket'),
+        require('./routes/user')
     ])
     await server.start()
     console.log(`Server running at: ${server.info.uri}`)
