@@ -76,7 +76,7 @@ class User {
       if (!userId) {
         throw new Error('No user id in request')
       }
-      const user = await UserModel.find({ _id: ObjectId(userId) })
+      const user = await UserModel.findOne({ _id: ObjectId(userId) })
       return { code: 20000, data: user }
     } catch(err) {
       console.error('error getUserDetails', err)
