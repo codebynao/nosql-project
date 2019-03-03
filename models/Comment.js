@@ -22,6 +22,7 @@ const CommentSchema = new Schema({
 	},
 	attachments: [String]
 })
-CommentSchema.index({ ticketId: 1 })
+
+CommentSchema.index({ userId: 1 })
 
 module.exports = mongoose.model('Comment', CommentSchema)

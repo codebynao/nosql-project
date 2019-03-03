@@ -59,6 +59,7 @@ const TicketSchema = new Schema({
 	],
 	commits: [String]
 })
-TicketSchema.index({ title: 1, priority: 1, status: 1 })
+
+TicketSchema.index({ title: 1, userId: 1, priority: 1, status: 1 })
 
 module.exports = mongoose.model('Ticket', TicketSchema)
