@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const configDefault = require('../config/default')
 
 const TicketSchema = new Schema({
   createdAt: {
@@ -35,13 +36,13 @@ const TicketSchema = new Schema({
   ],
   priority: {
     type: Number,
-    enum: [1, 2, 3, 4, 5],
+    enum: configDefault.TICKET_PRIORITIES,
     default: 3
   },
   status: {
     type: String,
-    enum: ['pending', 'done', 'open', 'closed', 'test'],
-    default: 'new'
+    enum: configDefault.TICKET_STATUS,
+    default: 'pending'
   },
   tags: [String],
   assignees: [
@@ -60,4 +61,4 @@ const TicketSchema = new Schema({
 })
 TicketSchema.index({ title: 1, priority: 1, status: 1 })
 
-module.exports = mongoose.model('ticket', TicketSchema)
+module.exports = mongoose.model('Ticket', TicketSchema)

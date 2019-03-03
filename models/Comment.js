@@ -8,10 +8,6 @@ const CommentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  ticketId: {
-    type: Schema.Types.ObjectId,
-    ref: 'Ticket'
-  },
   createdAt: {
     type: Date,
     default: Date.now
@@ -28,4 +24,4 @@ const CommentSchema = new Schema({
 })
 CommentSchema.index({ ticketId: 1 })
 
-module.exports = mongoose.model('comment', CommentSchema)
+module.exports = mongoose.model('Comment', CommentSchema)
