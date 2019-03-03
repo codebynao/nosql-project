@@ -1,7 +1,7 @@
 const Joi = require('joi')
 const configDefault = require('../config/default')
 
-const userSchema = Joi.object({
+const userSchema = {
   firstName: Joi.string().optional(),
   lastName: Joi.string().optional(),
   username: Joi.string().required(),
@@ -9,8 +9,8 @@ const userSchema = Joi.object({
   password: Joi.string().optional(),
   groups: Joi.array().items(Joi.string()).default([]),
   avatar: Joi.string().optional(),
-  tickets: Joi.array().items(Joi.string())
-}).required()
+  tickets: Joi.array().items(Joi.string()).optional()
+}
 
 const commentSchema = Joi.object({
   userId: userSchema,
@@ -43,4 +43,3 @@ module.exports = {
   ticketSchema,
   headerSchema
 }
-

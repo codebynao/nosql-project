@@ -9,16 +9,20 @@ class User {
    */
   async upsertUser(request, h) {
     try {
-      const userId = request.params.userId || ''
+      const userId = request.params.userId || null
+      let user = null
+      if (!userId) {
+        user = await UserModel.create(request.payload.user)
+      } else {
+        user = await UserModel.findOneAndUpdate(
+          { _id: new ObjectId(userId) },
+          { $set: request.payload.user },
+          {
+            new: true,
+            returnNewDocument: true
+          })
+      }
 
-      const user = await UserModel.findOneAndUpdate(
-        { _id: ObjectId(userId) },
-        { $set: request.payload.user },
-        {
-          upsert: true,
-          new: true,
-          returnNewDocument: true
-        })
       return { code: 20000, data: user }
     } catch(err) {
       console.error('error upsertUser', err)
@@ -27,7 +31,7 @@ class User {
   }
 
   /**
-   * Delete a user
+   * Delete (deactivate) a user
    */
   async deactivateUser(request, h) {
     try {

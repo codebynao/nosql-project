@@ -10,13 +10,11 @@ const UserSchema = new Schema({
   lastName: String,
   username: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   email: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   password: {
     type: String,
@@ -38,7 +36,10 @@ const UserSchema = new Schema({
       ref: 'Ticket'
     }
   ],
-  isActive: Boolean
+  isActive: {
+    type: Boolean,
+    default: true
+  }
 })
 UserSchema.index({ username: 1, email: 1 })
 
