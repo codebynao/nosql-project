@@ -7,7 +7,15 @@ require('dotenv').config({ path: process.env.DOTENV || '.env' })
 
 const server = Hapi.server({
     port: 8080,
-    host: 'localhost'
+    host: 'localhost',
+    routes: {
+        validate: {
+            failAction: async (request, h, err) => {
+                  console.error('validate', err)
+                  throw err
+              }
+        }
+    }
 })
 
 // Init the database
